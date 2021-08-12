@@ -41,7 +41,7 @@ export const order = async (req: Request, res: Response, next: NextFunction): Pr
         }
 
         const order = new Order({
-            user_id: isAuth,
+            user_id: isAuth.userId,
             product_id: itemId,
             arrival_date: new Date()
         });
@@ -59,7 +59,7 @@ export const order = async (req: Request, res: Response, next: NextFunction): Pr
     return
 }
 
-export const preorder = async (req: Request, res: Response, next: NextFunction): Promise<HttpException|void>  => {
+export const preOrder = async (req: Request, res: Response, next: NextFunction): Promise<HttpException|void>  => {
     const itemId = req.params.itemId;
 
     try{
@@ -76,9 +76,8 @@ export const preorder = async (req: Request, res: Response, next: NextFunction):
 
         // The arrival data will be filled when product is ordered
         const order = new Order({
-            user_id: isAuth,
+            user_id: isAuth.userId,
             product_id: itemId,
-            arrival_date: ""
         });
         
         const result = await order.save();

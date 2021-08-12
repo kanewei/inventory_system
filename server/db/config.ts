@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { Dialect, Sequelize } from 'sequelize'
+import { Dialect, Sequelize } from 'Sequelize'
 
 const dbName = process.env.NODE_ENV === "test" ? process.env.DB_DATABASE_TEST as string : process.env.DB_DATABASE as string
 const dbUser = process.env.DB_USERNAME as string

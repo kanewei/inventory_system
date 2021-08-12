@@ -2,9 +2,9 @@
   "name": "inventory_system",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
-    "start": "nodemon -r dotenv/config app.js",
+    "start": "nodemon app.ts",
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "NODE_ENV=test cross-env TS_NODE_PROJECT='test/tsconfig.test.json' mocha test/**/**.test.ts",
     "cover": "nyc --reporter=text-summary npm run test",
