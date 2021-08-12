@@ -1,0 +1,10 @@
+PORT=8080
+
+DB_CONNECTION=postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+
+DB_DATABASE_TEST=postgres_test

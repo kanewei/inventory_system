@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  app:
+    image: invetory_system
+    restart: always
+    networks:
+      - web
+      - default
+    environment:
+      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    restart: always
+
+  redis:
+    image: redis
+    volumes:
+      - ./redis/data:/data
+    ports:
+      - 6379:6379
+    restart: always
+
+networks:
+  web:
+    external: true
