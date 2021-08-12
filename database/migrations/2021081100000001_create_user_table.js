@@ -8,8 +8,9 @@ module.exports = {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       email: { type: STRING, allowNull: false, unique: true },
       password: { type: STRING, allowNull: false } ,
-      created_at: { type: DATE },
-      updated_at: { type: DATE }
+      createdAt: { type: DATE },
+      updatedAt: { type: DATE },
+      deletedAt: { type: DATE }
     })
   },
 

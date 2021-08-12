@@ -6,8 +6,9 @@ interface OrderAttributes  {
     user_id: number;
     product_id: string;
     arrival_date?: Date;
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date; 
 }
 
 export type OrderInput = Optional<OrderAttributes, 'id'>
@@ -20,8 +21,9 @@ class Order extends Model<OrderAttributes, OrderInput> implements OrderAttribute
     public product_id!: string
     public arrival_date!: Date
     
-    public readonly created_at!: Date;
-    public readonly updated_at!: Date;
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
+    public readonly deletedAt!: Date;
 }
 
 Order.init({
@@ -43,6 +45,7 @@ Order.init({
         allowNull: false
     }
 }, {
+  tableName: 'orders',
   sequelize: sequelizeConnection,
   paranoid: true
 })

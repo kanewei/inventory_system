@@ -7,8 +7,9 @@ interface UserAttributes  {
     id: number;
     email: string;
     password: string;
-    created_at?: Date;
-    updated_at?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date; 
 }
 
 export type UserInput = Optional<UserAttributes, 'id'>
@@ -20,9 +21,9 @@ class User extends Model<UserAttributes, UserInput> implements UserAttributes {
     public email!: string
     public password!: string
     
-    // timestamps!
-    public readonly created_at!: Date;
-    public readonly updated_at!: Date;
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
+    public readonly deletedAt!: Date;
 }
 
 User.init({
@@ -39,11 +40,11 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    created_at: {
+    createdAt: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.literal('NOW()')
     },
-    updated_at: {
+    updatedAt: {
         type: DataTypes.DATE,
         defaultValue: Sequelize.literal('NOW()')
     }

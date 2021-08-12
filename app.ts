@@ -1,9 +1,11 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
+import schedule from "node-schedule";
 import routes from './server/routes';
 import dbInit from './server/db/init';
 import HttpException from './server/util/httpException'
+import { DailyProcess } from './server/util/schedule'
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -34,6 +36,10 @@ app.use((error:HttpException, req: Request, res: Response, next: NextFunction) =
   res.status(status).json({ message: message, data: data });
 });
 
+schedule.scheduleJob('0 0 0 * * * ', function(){
+  // 
+});
+
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  DailyProcess()
 });

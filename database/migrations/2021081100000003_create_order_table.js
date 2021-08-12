@@ -9,8 +9,9 @@ module.exports = {
       user_id: { type: INTEGER, primaryKey: true },
       product_id: { type: STRING, primaryKey: true },
       arrival_date: { type: DATE },
-      created_at: { type: DATE },
-      updated_at: { type: DATE }
+      createdAt: { type: DATE },
+      updatedAt: { type: DATE },
+      deletedAt: { type: DATE }
     })
   },
 

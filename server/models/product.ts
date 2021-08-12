@@ -5,6 +5,10 @@ interface ProductAttributes  {
     id: string;
     currentInventory: number;
     defaultInventory: number;
+
+    createdAt?: Date;
+    updatedAt?: Date;
+    deletedAt?: Date; 
 }
 
 export type ProductInput = Optional<ProductAttributes, 'id'>
@@ -15,6 +19,10 @@ class Product extends Model<ProductAttributes, ProductInput> implements ProductA
     public id!: string
     public currentInventory!: number
     public defaultInventory!: number
+
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
+    public readonly deletedAt!: Date;
 }
 
 Product.init({
@@ -31,6 +39,7 @@ Product.init({
         allowNull: false
     }
 }, {
+  tableName: 'products',
   sequelize: sequelizeConnection,
   paranoid: true
 })
